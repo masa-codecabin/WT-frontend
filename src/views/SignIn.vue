@@ -4,7 +4,7 @@
     <h2>Sign in</h2>
     <input type="email" placeholder="Email" v-model="email" />
     <input type="password" placeholder="Password" v-model="password" />
-    <button>Sign In</button>
+    <button @click="signIn">Sign In</button>
     <p>
       Do you have an account?
       <router-link to="/signup">sign up here</router-link>
@@ -13,14 +13,34 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "Signin",
+  name: "Signup",
   data() {
     return {
       email: "",
       password: "",
       user: null,
     };
+  },
+  methods: {
+    signIn() {
+      axios
+        .post("http://localhost:3000/api/auth/sign_in", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          localStorage.setItem(
+            "access-token",
+            response.headers["access-token"]
+          );
+          localStorage.setItem("uid", response.headers["uid"]);
+          this.access_token = response.headers["access-token"];
+          this.uid = response.headers["uid"];
+        });
+      this.$router.push("/usersshow");
+    },
   },
 };
 </script>

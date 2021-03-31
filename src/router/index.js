@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import SignUp from '@/views/SignUp'
 import SignIn from '@/views/SignIn'
-import User from '@/views/users/User'
+import UsersIndex from '@/views/users/UsersIndex'
+import UsersShow from '@/views/users/UsersShow'
 
 Vue.use(Router)
 
@@ -26,9 +27,14 @@ export default new Router({
       component: SignIn
     },
     {
-      path: '/v1/users',
-      name: 'User',
-      component: User
+      path: '/usersindex',
+      name: 'usersindex',
+      component: UsersIndex
+    },
+    {
+      path: '/usersshow',
+      name: 'usersshow',
+      component: UsersShow
     }
   ]
 })

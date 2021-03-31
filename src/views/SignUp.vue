@@ -42,7 +42,7 @@ export default {
           this.access_token = response.headers["access-token"];
           this.uid = response.headers["uid"];
         });
-      this.$router.push("/v1/users");
+      this.$router.push("/usersshow");
     },
   },
 };
