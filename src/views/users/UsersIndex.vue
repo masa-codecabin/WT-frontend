@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>Website Tracker</h1>
-    <h2>User List</h2>
+    <h2>Users List</h2>
     <section v-for="user in users" :key="user.id">
       <h3>{{ user.name }}</h3>
       <h3>{{ user.email }}</h3>

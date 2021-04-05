@@ -2,7 +2,10 @@
   <div class="hello">
     <h1>Website Tracker</h1>
     <h2>User name</h2>
-    <h3>{{ user.name }}</h3>
+    <section v-for="user in users" :key="user.id">
+      <h3>{{ user.name }}</h3>
+      <h3>{{ user.email }}</h3>
+    </section>
   </div>
 </template>
 
@@ -11,13 +14,13 @@ import axios from "axios";
 export default {
   data() {
     return {
-      user: [],
+      users: [],
     };
   },
   mounted() {
     axios
-      .get(`http://localhost:3000/api/v1/users/${1}`)
-      .then((response) => (this.user = response.data));
+      .get(`http://localhost:3000/api/v1/users/${1}.json`)
+      .then((response) => (this.users = response.data));
   },
 };
 </script>

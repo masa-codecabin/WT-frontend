@@ -38,8 +38,11 @@ export default {
           localStorage.setItem("uid", response.headers["uid"]);
           this.access_token = response.headers["access-token"];
           this.uid = response.headers["uid"];
+          this.$router.push("/usersshow");
+          (error) => {
+            console.log(error);
+          };
         });
-      this.$router.push("/usersshow");
     },
   },
 };
