@@ -35,10 +35,14 @@ export default {
             "access-token",
             response.headers["access-token"]
           );
+
+          // STATE MANAGEMENT
           localStorage.setItem("uid", response.headers["uid"]);
           this.access_token = response.headers["access-token"];
           this.uid = response.headers["uid"];
-          this.$router.push("/usersshow");
+          // pass the user_id after sign in
+          this.$router.push("/usersshow/" + response.data.data.id);
+
           (error) => {
             console.log(error);
           };

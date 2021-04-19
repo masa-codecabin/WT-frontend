@@ -35,7 +35,7 @@ export default new Router({
       component: UsersIndex
     },
     {
-      path: '/usersshow',
+      path: '/usersshow/:user_id',
       name: 'usersshow',
       component: UsersShow
     },

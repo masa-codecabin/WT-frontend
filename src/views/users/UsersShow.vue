@@ -6,6 +6,11 @@
       <h3>{{ user.name }}</h3>
       <h3>{{ user.email }}</h3>
     </section>
+    <nav>
+      <router-link to="/home">Home</router-link>
+      <router-link to="/search">Search</router-link>
+      <router-link to="/setting">Setting</router-link>
+    </nav>
   </div>
 </template>
 
@@ -15,11 +20,16 @@ export default {
   data() {
     return {
       users: [],
+      user_id: this.$route.params.user_id,
     };
   },
   mounted() {
+
+    let uid = localStorage.getItem('uid')
+
+
     axios
-      .get(`http://localhost:3000/api/v1/users/${1}.json`)
+      .get(`http://localhost:3000/api/v1/users/${this.user_id}.json`)
       .then((response) => (this.users = response.data));
   },
 };
